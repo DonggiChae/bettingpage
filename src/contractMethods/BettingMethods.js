@@ -6,7 +6,6 @@ import BigNumber from "bignumber.js";
 const DEPLOYED_ADDRESS = ContractAdr.lock;
 
 const BettingToken = async (whichSide, klayAmount) => {
-  console.log(window.klaytn.selectedAddress, klayAmount);
   await BettingContract.methods
     .bet(whichSide)
     .estimateGas({

@@ -11,8 +11,6 @@ export const StartBetting = async () => {
       })
     )
     .catch((e) => {
-      toast.error(`${e}`, {
-        position: toast.POSITION.TOP_CENTER,
-      });
+      console.log(e);
     });
 };

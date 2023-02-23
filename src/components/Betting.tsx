@@ -122,7 +122,7 @@ export default function Betting() {
   const URL = "/getPrice";
   const [bettingAmount, setBettingAmount] = useState("0");
   const [amountErr, setAmountErr] = useState(false);
-  const [bitcoinPrice, setBitcoinPrice] = useState(0);
+  const [bitcoinPrice, setBitcoinPrice] = useState("0");
   const [status, setStatus] = useState(true);
   const [eachAmount, setEachAmount] = useState([0, 0, 0]);
   const handleBettingAmountChange = (
@@ -141,7 +141,6 @@ export default function Betting() {
     const { name } = e.currentTarget;
     if (amountErr) {
       try {
-        // await StartBetting();
         await BettingToken(name, Number(bettingAmount) * 10 ** 18);
       } catch (err) {
         console.log(err);
@@ -158,7 +157,7 @@ export default function Betting() {
   };
 
   useEffect(() => {
-    const fetchStatus = async () => {
+    const fetchEachPrice = async () => {
       try {
         await GetEachAmount(setStatus);
       } catch (e) {
@@ -175,22 +174,21 @@ export default function Betting() {
       }
     };
 
-    fetchStatus();
+    fetchEachPrice();
     fetchData();
   }, []);
 
   useEffect(() => {
-    const fetchEachPrice = async () => {
+    const fetchStatus = async () => {
       try {
         await GetStatus(setEachAmount);
       } catch (e) {
         console.log(e);
       }
     };
-    if (!status) {
-      fetchEachPrice();
-    }
-  }, [status]);
+    fetchStatus();
+    console.log(status);
+  }, []);
   return (
     <BettingContainer>
       <PriceWrapper>
@@ -199,7 +197,7 @@ export default function Betting() {
           Guess the price in an hour. Prices are received on time. And you can
           place bets for 5 minutes.
         </BettingExplain>
-        <PriceNumber>{bitcoinPrice}</PriceNumber>
+        <PriceNumber>{bitcoinPrice.slice(0, -6)}</PriceNumber>
       </PriceWrapper>
       {status ? (
         <BettingAmountAndButtons>
