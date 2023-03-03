@@ -8,6 +8,7 @@ const DEPLOYED_ABI = Betting.abi;
 const BettingContract =
   DEPLOYED_ABI &&
   DEPLOYED_ADDRESS &&
+  caver &&
   new caver.klay.Contract(DEPLOYED_ABI, DEPLOYED_ADDRESS);
 
 export default BettingContract;

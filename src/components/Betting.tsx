@@ -118,6 +118,7 @@ const BettingAmountWrapper = styled.div`
 const BettingAmount = styled.div``;
 
 const BettingAmountLabel = styled.div``;
+
 export default function Betting() {
   const URL = "/getPrice";
   const [bettingAmount, setBettingAmount] = useState("0");

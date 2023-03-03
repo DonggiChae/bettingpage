@@ -9,7 +9,11 @@ import Caver from "caver-js";
 
 // const rpcURL = BAOBAB_TESTNET_RPC_URL;
 
-const KLAYTN = window.klaytn;
-const caver = new Caver(KLAYTN);
+let caver;
+
+if (typeof window !== "undefined") {
+  const KLAYTN = window?.klaytn;
+  caver = new Caver(KLAYTN);
+}
 
 export default caver;

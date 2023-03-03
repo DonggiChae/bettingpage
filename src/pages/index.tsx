@@ -4,14 +4,14 @@ import { Inter } from "@next/font/google";
 import styles from "@/styles/Home.module.css";
 import dynamic from "next/dynamic";
 
-// import Betting from "@/components/Betting";
+import Betting from "@/components/Betting";
 
 const inter = Inter({ subsets: ["latin"] });
-const Betting = dynamic(
-  // typescript에서 props를 전달할때 interface를 정의해줍니다.
-  () => import("@/components/Betting"), // Component로 사용할 항목을 import합니다.
-  { ssr: false } // ssr옵션을 false로 설정해줍니다.
-);
+// const Betting = dynamic(
+//   // typescript에서 props를 전달할때 interface를 정의해줍니다.
+//   () => import("@/components/Betting"), // Component로 사용할 항목을 import합니다.
+//   { ssr: false } // ssr옵션을 false로 설정해줍니다.
+// );
 
 export default function Home() {
   return (

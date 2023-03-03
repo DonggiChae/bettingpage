@@ -58,7 +58,13 @@ declare global {
 }
 
 function ConnectToWallet() {
-  const klaytn = window.klaytn;
+  // let klaytn: any;
+  // if (typeof window !== undefined) {
+  //   klaytn = window.klaytn;
+  // }
+
+  const klaytn = window?.klaytn;
+
   const dispatch = useDispatch();
   const user = useSelector((state: RootState) => state.auth.user);
 
